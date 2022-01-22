@@ -38,7 +38,7 @@ function displayTime() {
 
         // create buttons
         let saveBtn = $('<button>');
-        saveBtn.addClass('col-1 saveBtn');
+        saveBtn.addClass('col-1 saveBtn fas fa-check-circle');
         rowEl.append(saveBtn);
     }
 })()
