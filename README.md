@@ -1,6 +1,6 @@
 # work-day-planner
 
-This project is a simple work day scheduler made with HTML, CSS/Bootstrap, and Jquery. The current time and date is displayed on the top header and has time slots from 9AM to 5PM where you can save your desired todo tasks by using the green button at the end of the row. Tasks are saved using local storage. A 'Clear All Tasks' button is included in the header which allows you to clear your entire scheduled tasks from the text areas and from local storage.
+This project is a simple work day scheduler made with HTML, CSS/Bootstrap, and Jquery. The current time and date is displayed on the top header and has time slots from 9AM to 5PM where you can save your desired todo tasks by using the green button at the end of the row. Tasks are saved using local storage. Rows colors are set depending on time of day - past task textareas become grey, present is red, and future tasks are green. A 'Clear All Tasks' button is included in the header which allows you to clear your entire scheduled tasks from the text areas and from local storage.
 
 
 ## Installation
