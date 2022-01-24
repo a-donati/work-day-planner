@@ -49,18 +49,18 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
+  background-color: #f1efef;
+  color: rgb(0, 0, 0);
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: #f7b9b5;
+  color: rgb(0, 0, 0);
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: #d5fcd5;
+  color: rgb(0, 0, 0);
 }
 
 .saveBtn {
