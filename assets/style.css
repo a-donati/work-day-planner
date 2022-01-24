@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
 
 body {
-  font-family: 'Roboto', 'Open Sans', sans-serif;
+  font-family: "Roboto", "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
 }
@@ -20,10 +18,10 @@ textarea {
 .jumbotron {
   text-align: center;
   /* background-color: transparent; */
-  background-color:#2596be;
+  background-color: #2596be;
   color: black;
   border-radius: 0px;
-  border-bottom: 10px solid #be2596
+  border-bottom: 10px solid #be2596;
 }
 
 .description {
@@ -68,7 +66,7 @@ textarea {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #96be25;
-  color: #000000
+  color: #000000;
 }
 
 .saveBtn i:hover {
