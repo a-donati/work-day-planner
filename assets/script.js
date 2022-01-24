@@ -1,5 +1,8 @@
 let currentDay = $('#currentDay');
 let $divContainer = $('.container');
+let header = $('header');
+let clearBtnEl = $('.clearBtn');
+
 console.log(moment().hour);
 
 // hours that will appear on calendar
@@ -33,38 +36,48 @@ setInterval(displayTime, 1000);
         // create textarea
         let textareaEl = $('<textarea>');
         textareaEl.addClass('col-10 description');
-        //set  each textarea HTML data attribute to 'data-hour=hoursArray[i]'
+        //set each textarea HTML data attribute to 'data-hour=hoursArray[i]'
         textareaEl.data('hour', hoursArray[i]);
+        
+        // setting class styles to the text area depending on the current time
+        if(moment().hour() > hoursArray[i]) {
+            textareaEl.addClass('past');
+        } else if(moment().hour() < hoursArray[i]) {
+            textareaEl.addClass('future')
+        } else {
+            textareaEl.addClass('present');
+        }
+        // if localStorage != null, display ls text within textarea
+        if(localStorage.getItem(hoursArray[i])) {
+            let savedText = localStorage.getItem(hoursArray[i]);
+            textareaEl.text(savedText);
+        }
         rowEl.append(textareaEl);
 
-        // create buttons
+        // create save buttons
         let saveBtn = $('<button>');
         saveBtn.addClass('col-1 saveBtn fas fa-check-circle');
         rowEl.append(saveBtn);
-        
-        // when right clicking on the save button, textarea is cleared
-        $divContainer.on('contextmenu', (e)=> {
+
+        // when button is clicked, textarea is cleared and localstorage is wiped
+        clearBtnEl.on('click', (e)=> {
             e.preventDefault();
-            textareaEl.val("");
+            textareaEl.val('')
+            localStorage.clear();
         })
+        
     }
-    
-})()
+})()    
 
 $divContainer.on('click', 'button', saveTask)
 function saveTask(e) {
     e.preventDefault()
-    // using previoussibling to obtain the value from textarea when clicking the save button 
+    // using previousElementsibling to obtain the value from textarea when clicking the save button 
     console.log($(this.previousElementSibling));
     let task = $(this.previousElementSibling).val();
+    let workDayHour = $(this.previousElementSibling).data('hour');
     console.log(task);
+    console.log(workDayHour);
+    localStorage.setItem(workDayHour, task);
 }
-// click save button to save text input to local storage for each respective hour
 
-// moment() of selected date, get piece of out of for specific format
-// monent() get todays date, 
-// moment() gives today, moment(selected_Date) gives the specific time or date 
-// for each row that === the hour, apply the past, present, future class. 
-// moment() is before/ is after syntax
-// build the row with id/class 
-// capital HH for 24 hour clock in moment()
