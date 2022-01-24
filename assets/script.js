@@ -15,8 +15,9 @@ function displayTime() {
 // setInterval to update time every second
 setInterval(displayTime, 1000);
 
-// using IIFE for fun ~ probably unecessary
-(function printCalendar() {
+printCalendar();
+
+function printCalendar() {
     // iterate through hoursArray length to create rows
     for (let i = 0; i < hoursArray.length; i++) {
         let rowEl = $("<row>");
@@ -64,7 +65,7 @@ setInterval(displayTime, 1000);
             localStorage.clear();
         });
     }
-})();
+};
 
 $divContainer.on("click", "button", saveTask);
 function saveTask(e) {
