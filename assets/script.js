@@ -3,6 +3,7 @@ let $divContainer = $(".container");
 let header = $("header");
 let clearBtnEl = $(".clearBtn");
 
+
 // hours that will appear on calendar
 let hoursArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
@@ -57,24 +58,42 @@ function printCalendar() {
         let saveBtn = $("<button>");
         saveBtn.addClass("col-1 saveBtn fas fa-check-circle");
         rowEl.append(saveBtn);
+    };
 
-        // when button is clicked, textarea is cleared and localstorage is wiped
-        clearBtnEl.on("click", (e) => {
-            e.preventDefault();
-            textareaEl.val("");
-            localStorage.clear();
-        });
+    
+    $divContainer.on("click", "button", saveTask);
+
+    function saveTask(e) {
+        e.preventDefault();
+        // using previousElementsibling to obtain the value from textarea when clicking the save button
+        // console.log($(this.previousElementSibling));
+        let task = $(this.previousElementSibling).val();
+        let workDayHour = $(this.previousElementSibling).data("hour");
+        // console.log(task);
+        // console.log(workDayHour);
+        localStorage.setItem(workDayHour, task);
     }
-};
 
-$divContainer.on("click", "button", saveTask);
-function saveTask(e) {
-    e.preventDefault();
-    // using previousElementsibling to obtain the value from textarea when clicking the save button
-    console.log($(this.previousElementSibling));
-    let task = $(this.previousElementSibling).val();
-    let workDayHour = $(this.previousElementSibling).data("hour");
-    console.log(task);
-    console.log(workDayHour);
-    localStorage.setItem(workDayHour, task);
+    // when button is clicked, textarea is cleared and localstorage is wiped
+    clearBtnEl.on("click", (e) => {
+        e.preventDefault();
+        $(".description").each(function () {
+            $(this).val("")
+        })
+        localStorage.clear();
+        showAlert('All tasks cleared');
+    });
+
+    // showAlert message
+    function showAlert(message) {
+        let div = $('<div>');
+        div.addClass('alert alert-success');
+        div.text(message);
+        $divContainer.prepend(div);
+
+        setTimeout(function () {
+            $('.alert').remove();
+        }, 3000);
+
+    }
 }

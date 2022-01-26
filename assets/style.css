@@ -69,7 +69,7 @@ textarea {
   color: #000000;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
@@ -79,3 +79,4 @@ textarea {
   background-color: #96be25;
   color: #000000;
 }
+
